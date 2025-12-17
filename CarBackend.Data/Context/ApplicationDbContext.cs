@@ -11,7 +11,7 @@ namespace CarBackend.Data.Context
         {
         }
 
-        public DbSet<TrafficRecords> TrafficRecords { get; set; }
+        public DbSet<VehicleLog> vehicleLogs { get; set; }
 
 
 

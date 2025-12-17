@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CarBackend.Core\CarBackend.Core.csproj" />
-    <ProjectReference Include="..\CarBackend.Data\CarBackend.Data.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.2.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IService\" />
-    <Folder Include="Service\" />
+    <ProjectReference Include="..\CarBackend.Core\CarBackend.Core.csproj" />
+    <ProjectReference Include="..\CarBackend.Data\CarBackend.Data.csproj" />
   </ItemGroup>
 
 </Project>

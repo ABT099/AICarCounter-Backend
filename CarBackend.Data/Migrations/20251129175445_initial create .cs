@@ -7,24 +7,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CarBackend.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class addingusermodel : Migration
+    public partial class initialcreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_trafficRecords",
-                table: "trafficRecords");
-
-            migrationBuilder.RenameTable(
-                name: "trafficRecords",
-                newName: "TrafficRecords");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_TrafficRecords",
-                table: "TrafficRecords",
-                column: "Id");
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -44,8 +31,7 @@ namespace CarBackend.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
-                    First_Name = table.Column<string>(type: "text", nullable: false),
-                    Last_Name = table.Column<string>(type: "text", nullable: false),
+                    FullName = table.Column<string>(type: "text", nullable: false),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -64,6 +50,20 @@ namespace CarBackend.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "vehicleLogs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    VehicleType = table.Column<string>(type: "text", nullable: false),
+                    DetectedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_vehicleLogs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -229,23 +229,13 @@ namespace CarBackend.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "vehicleLogs");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "Users");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_TrafficRecords",
-                table: "TrafficRecords");
-
-            migrationBuilder.RenameTable(
-                name: "TrafficRecords",
-                newName: "trafficRecords");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_trafficRecords",
-                table: "trafficRecords",
-                column: "Id");
         }
     }
 }

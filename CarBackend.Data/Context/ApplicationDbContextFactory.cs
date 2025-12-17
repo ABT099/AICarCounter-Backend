@@ -10,7 +10,7 @@ namespace CarBackend.Data.Context
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
             // Connection string for migrations
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=CarCounterDB;Username=postgres;Password=reta2006..");
+            optionsBuilder.UseNpgsql("DefaultConnection");
 
             return new ApplicationDbContext(optionsBuilder.Options);
         }

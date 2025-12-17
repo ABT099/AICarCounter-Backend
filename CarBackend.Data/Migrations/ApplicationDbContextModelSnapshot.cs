@@ -22,42 +22,6 @@ namespace CarBackend.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("CarBackend.Core.Models.TrafficRecords", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Bus_count")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Motorcycle_count")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Total_vehicles")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Truck_count")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("camera_Id")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("car_count")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("car_type")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TrafficRecords");
-                });
-
             modelBuilder.Entity("CarBackend.Core.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -77,11 +41,7 @@ namespace CarBackend.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("First_Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Last_Name")
+                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -260,6 +220,26 @@ namespace CarBackend.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("VehicleLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DetectedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("VehicleType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("vehicleLogs");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
