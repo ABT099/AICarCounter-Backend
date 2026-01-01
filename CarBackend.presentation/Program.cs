@@ -124,10 +124,13 @@ var app = builder.Build();
 
 // 6. الـ Middleware Pipeline
 
+// ✅ التعديل هنا: تفعيل Swagger دائماً (سواء في Development أو Production)
+app.UseSwagger();
+app.UseSwaggerUI();
+
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    // يمكنك إضافة أدوات أخرى خاصة بالتطوير فقط هنا
 }
 
 app.UseHttpsRedirection();
