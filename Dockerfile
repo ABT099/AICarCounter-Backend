@@ -7,11 +7,6 @@ COPY ["CarBackend.presentation/CarBackend.Presentation.csproj", "CarBackend.pres
 COPY ["CarBackend.Core/CarBackend.Core.csproj", "CarBackend.Core/"]
 COPY ["CarBackend.Data/CarBackend.Data.csproj", "CarBackend.Data/"]
 COPY ["CarBackend.Services/CarBackend.Services.csproj", "CarBackend.Services/"]
-
-# Install dotnet-ef as a local tool
-RUN dotnet new tool-manifest
-RUN dotnet tool install dotnet-ef
-
 RUN dotnet restore "CarBackend.presentation/CarBackend.Presentation.csproj"
 
 # Copy everything else and build
